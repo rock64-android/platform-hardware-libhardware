@@ -266,12 +266,16 @@ typedef void (* btrc_passthrough_rsp_callback) (int id, int key_state);
 
 typedef void (* btrc_connection_state_callback) (bool state, bt_bdaddr_t *bd_addr);
 
+typedef void (* btrc_ct_DataResponse_Callback) (uint16_t txtLen,uint8_t *text);
+
+
 /** BT-RC Controller callback structure. */
 typedef struct {
     /** set to sizeof(BtRcCallbacks) */
     size_t      size;
     btrc_passthrough_rsp_callback               passthrough_rsp_cb;
     btrc_connection_state_callback              connection_state_cb;
+	btrc_ct_DataResponse_Callback               ct_dataresponse_cb;
 } btrc_ctrl_callbacks_t;
 
 /** Represents the standard BT-RC AVRCP Controller interface. */
