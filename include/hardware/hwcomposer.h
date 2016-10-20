@@ -217,6 +217,10 @@ typedef struct hwc_layer_1 {
              */
             hwc_region_t visibleRegionScreen;
     		char LayerName[LayerNameLength + 1];
+
+            /*---------------*/
+            // .R : 之后是 rk 扩展.
+
 			int32_t bufferCount;
             int32_t bufferUpdate;
             int32_t bufferChange;
@@ -229,6 +233,12 @@ typedef struct hwc_layer_1 {
 			uint32_t realtransform;
 			uint32_t direct_fd;
 			uint32_t direct_addr;
+            /**
+             * 当前 layer 是否被预期使用某种 fbdc 格式, 同 Layer::mFbdc.
+             * 目前仅用在 dump sf 的输出中.
+             */
+            bool useFbdc;
+            /*---------------*/
 
             /* Sync fence object that will be signaled when the buffer's
              * contents are available. May be -1 if the contents are already
